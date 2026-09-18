@@ -56,7 +56,8 @@ class GenericCsvAdapter(SourceAdapter):
             geo = working.apply(_extract_geo, axis=1, result_type="expand")
         except Exception as exc:  # noqa: BLE001 - surface as adapter error
             raise AdapterError(f"failed to parse geography columns: {exc}") from exc
-        working = working.drop(columns=[c for c in geo.columns if c in working.columns], errors="ignore")
+        overlapping = [c for c in geo.columns if c in working.columns]
+        working = working.drop(columns=overlapping, errors="ignore")
         working = pd.concat([working, geo], axis=1)
 
         if "year" not in working.columns:
