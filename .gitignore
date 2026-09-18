@@ -21,8 +21,9 @@ env/
 .env.*
 !.env.example
 
-# Data outputs (keep raw fixtures)
-data/processed/
+# Data outputs (keep raw fixtures and directory placeholder)
+data/processed/**
+!data/processed/.gitkeep
 *.parquet
 
 # IDE / OS
