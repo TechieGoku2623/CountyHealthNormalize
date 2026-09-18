@@ -1,0 +1,5 @@
+fips,state_name,county_name,year,adult_obesity,uninsured,population,source
+06037,california,los angeles,2023,28.4,10.2,9829544,chr_sample
+17031,illinois,cook,2023,31.1,9.8,5275541,chr_sample
+48201,texas,harris,2023,33.5,22.1,4731145,chr_sample
+36061,new york,new york,2023,18.9,5.4,1596273,chr_sample

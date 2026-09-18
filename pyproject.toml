@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "county-health-normalize"
+version = "0.1.0"
+description = "Normalize county-level health indicator datasets into a stable, analytics-ready schema."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "CountyHealthNormalize contributors" }]
+keywords = ["county", "health", "normalize", "etl", "fips", "public-health"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+  "pandas>=2.2",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2",
+  "pytest-cov>=5.0",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+chn = "county_health_normalize.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/TechieGoku2623/CountyHealthNormalize"
+Repository = "https://github.com/TechieGoku2623/CountyHealthNormalize"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/county_health_normalize"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --cov=county_health_normalize --cov-report=term-missing"
+
+[tool.coverage.run]
+branch = true
+source = ["county_health_normalize"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
